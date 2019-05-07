@@ -509,4 +509,14 @@ const totalLast25 = runners
 totalDiff = Math.abs(totalFirst25 - totalLast25);
 console.log("Donation difference first 25 and last 25: ", totalDiff);
 
-// Problem 3
+// Problem 3: Return an array that has a list of all users and each user should have a new property called percentage which represents that user's own percentage of the whole amount donated
+
+const totalDonation = runners.reduce(
+  (sum, current) => sum + current.donation,
+  0
+);
+const updatedRunners = runners.map(runner => ({
+  ...runner,
+  percentage: `${(runner.donation / totalDonation) * 100}%`
+}));
+console.log(updatedRunners);
