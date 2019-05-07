@@ -57,14 +57,18 @@ function multiplyNums(x, y, cb) {
 }
 
 // Function Invocation
-multiplyNums(2, 3, product => console.log(`Product is: ${product}`));
+multiplyNums(2, 3, product => console.log("Product is:", product));
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  return cb(list.includes(item));
 }
 
-/* STRETCH PROBLEM */
+// Function Invocation
+contains(2, [2, 3], status => console.log("Status of contains:", status));
+
+/* STRETCH PROBLEM */ 
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
