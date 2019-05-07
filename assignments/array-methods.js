@@ -478,14 +478,35 @@ console.log(largeShirts);
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
-ticketPriceTotal = runners.reduce((sum, curr) => sum + curr.donation, 0);
+ticketPriceTotal.push(runners.reduce((sum, curr) => sum + curr.donation, 0));
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1: The event director wants to personally thank every runner who made it to the event by email. But he wants to automate this task to send every runner the same message in the email but with their firstname written in it.
+// write a function to returns an array of objects where each object has the runner's email and a message for each runner with their first name in it.
+let messages = [];
+runners.forEach(runner =>
+  messages.push({
+    email: runner.email,
+    message: `Hello ${
+      runner.first_name
+    }, We appreciate your presence and donation at our event. Best Regards, Event Director`
+  })
+);
+console.log(messages);
 
-// Problem 2
+// Problem 2: Get the total difference in donation between the first 25 runners and the last 25 runners. Follow the order in which they appear
+let totalDiff = 0;
+const totalFirst25 = runners
+  .slice(0, 25)
+  .reduce((sum, current) => sum + current.donation, 0);
+const totalLast25 = runners
+  .slice(runners.length - 25)
+  .reduce((sum, current) => sum + current.donation, 0);
+
+totalDiff = Math.abs(totalFirst25 - totalLast25);
+console.log("Donation difference first 25 and last 25: ", totalDiff);
 
 // Problem 3
