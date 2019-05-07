@@ -68,10 +68,16 @@ function contains(item, list, cb) {
 // Function Invocation
 contains(2, [2, 3], status => console.log("Status of contains:", status));
 
-/* STRETCH PROBLEM */ 
+/* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  const noDuplicates = [...new Set([1, 2, 2, 3, 4, 4])];
+  return cb(noDuplicates);
 }
+
+removeDuplicates([1, 2, 2, 3, 4, 4], noDups =>
+  console.log("No Duplicates: ", noDups)
+);
